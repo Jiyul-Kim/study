@@ -1,13 +1,27 @@
-body{
-    text-align: center;
-    background-color:rgb(245, 242, 227) ;
-}
 h1{
-    font-family: 'Oswald', sans-serif;
-    color: brown;
+    font-size: 60px;
+    color: rgb(87, 87, 87);
 }
 
-p{
-    font-family: 'Fira Sans', sans-serif;
-    color: gray;
+a {
+    background-color: rgb(167, 1, 78);
+    color: white;
+    border-radius: 4px;
+    font-size: 24px;
+}
+
+a:hover {
+    background-color: rgb(180, 12, 90, );
+    text-decoration: none;
+}
+
+ol{
+    list-style:disc;
+    color: rgb(43, 43, 43);
+}
+
+li{
+    margin: 32px;
+    background-color: rgb(223, 136, 124);
+    border-radius: 16px;
 }

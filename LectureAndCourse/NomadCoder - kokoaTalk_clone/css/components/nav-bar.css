@@ -15,34 +15,53 @@
 }
 .nav__link{
     position: relative;
-    color: #2F363E;
+}
 
+@keyframes notificationAnimation{
+    0%{
+        transform: none;
+    }
+    50%{
+        transform: translateY(-5px) rotateY(360deg);
+    }
+    100%{
+        transform: none;
+    }
 }
 
 .nav__notification{
-    background-color: tomato;
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-weight: 900;
     position: absolute;
     left: 15px;
     bottom: 15px;
+    animation: notificationAnimation 2s ease-in-out infinite;
 }
 .nav__new{
-    background-color: tomato;
-    color: tomato;
-    width: 6px;
-    height: 6px;
-    border-radius: 3px;
-    font-size: 1px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: absolute;
     left: 30px;
+}
+
+@keyframes appearBtnAnimtion {
+    from{
+        transform: translatey(50px);
+        opacity: 0;
+    }
+    to{
+        transform: none;
+        opacity: 1;
+    }
+}
+
+.nav__btn {
+    transform: translatey(50px);
+    opacity: 0;
+    animation: appearBtnAnimtion 1s ease-in-out forwards;
+}
+.nav__btn:nth-child(2){
+    animation-delay: 0.2s;
+}
+.nav__btn:nth-child(3){
+    animation-delay: 0.4s;
+}
+.nav__btn:last-child{
+    animation-delay: 0.6s;
 }

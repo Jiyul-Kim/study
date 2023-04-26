@@ -1,31 +1,16 @@
-body {
+
+
+body{
     text-align: center;
-    background-color: rgb(245, 242, 227);
-    margin: 50px;
+    background-color:rgb(245, 242, 227) ;
 }
-
 h1{
-    font-family: 'Sigmar', cursive;
-    color: rgb(37, 37, 37);
-    margin-bottom: 50px;
+    font-family: 'Oswald', sans-serif;
 }
-
-img{
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-}
-
 p{
-    color: rgba(0, 0, 0, 0.6);
+    font-family: 'Fira Sans', sans-serif;
+    color: gray;
 }
-
-#list-learn {
-    font-weight: 700;
-    color: #C91B10;
-    font-size: 20px;
-}
-
 a {
     text-decoration: none;
     
