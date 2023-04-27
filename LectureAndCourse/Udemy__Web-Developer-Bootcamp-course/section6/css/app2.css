@@ -1,0 +1,16 @@
+h1 {
+    text-align: center;
+    font-weight: 400;
+
+    letter-spacing: 15px;
+    text-decoration: blue underline wavy;
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+p{
+    text-align: left;
+    line-height: 1.5;
+}
+a{
+    text-decoration: none;
+}

@@ -1,0 +1,13 @@
+h1{
+    color: rgb(105, 50, 156);
+}
+button{
+    color:darkolivegreen;
+    background-color: burlywood;
+}
+button:hover{
+    color: aqua;
+}
+p{
+    background-color: cornsilk;
+}
