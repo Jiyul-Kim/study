@@ -1,0 +1,100 @@
+@import url("reset.css");
+@import url("var.css");
+
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+}
+
+div:first-child{
+    position: relative;
+}
+header {
+    height: 40px;
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--main-paing);
+    padding-bottom: 40px;
+    font-size: 20px
+
+}
+.main-navber{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav {
+    width: 90%;
+    height: 50px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    position: absolute;
+    top:8%;
+    font-size: 15px;
+    color: rgb(183, 183, 183);
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+.main-content {
+    margin-top: 30px;
+    padding: var(--main-paing);
+}
+h2 {
+    font-size: 30px;
+    font-weight: 700;
+}
+.daily-book__info {
+    margin: 20px 0;
+    display: flex;
+}
+.daily-book__info>img {
+    height: 190px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+.daily-book__sub-info{
+    width: 100%;
+}
+
+.daily-book__title {
+    font-size: 25px;
+    font-family: 'Song Myung', serif;
+
+}
+.daily-book__article{
+    font-size: 9px;
+    font-weight:100;
+    line-height: 15px;
+    opacity: 50%;
+}
+.daily-book__btn{
+    margin: 15px 0;
+}
+
+.daily-book__btn button {
+    width: 80px;
+    height: 29px;
+    border-style: none;
+    border-radius: 5px;
+}
+.daily-book__btn button:nth-child(2) {
+    margin-left: 5px;
+}
+
+.bookmark-i-cricle{
+    background-color: var(--main-color);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
