@@ -10,6 +10,9 @@ body{
 div:first-child{
     position: relative;
 }
+h1 {
+    font-weight: 700;
+}
 header {
     height: 40px;
     background-color: var(--main-color);
@@ -38,18 +41,18 @@ nav {
     align-items: center;
     z-index: 1;
     position: absolute;
-    top:8%;
     font-size: 15px;
     color: rgb(183, 183, 183);
     box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
 }
 .main-content {
-    margin-top: 30px;
     padding: var(--main-paing);
 }
 h2 {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 700;
+    margin: 23px 0;
+
 }
 .daily-book__info {
     margin: 20px 0;
@@ -62,6 +65,9 @@ h2 {
 }
 .daily-book__sub-info{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .daily-book__title {
@@ -75,26 +81,100 @@ h2 {
     line-height: 15px;
     opacity: 50%;
 }
+.daily-book__review-icons {
+    font-size: 13px;
+}
 .daily-book__btn{
     margin: 15px 0;
 }
 
+
 .daily-book__btn button {
-    width: 80px;
+    width: 90px;
     height: 29px;
     border-style: none;
     border-radius: 5px;
+    background-color: rgb(238, 236, 236);
 }
 .daily-book__btn button:nth-child(2) {
     margin-left: 5px;
 }
 
+.daily-book__sell-btn{
+    display: flex;
+    justify-content: space-between;
+}
+
 .bookmark-i-cricle{
     background-color: var(--main-color);
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.sell-btn {
+    width: 130px;
+    height: 45px;
+    border-style: none;
+    border-radius: 5px;
+    background-color: rgb(34, 34, 34);
+    color: white;
+}
+
+.top-book__list{
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-book__info > img {
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.top-book__info {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    font-size: 7.5px;
+    text-align: center;
+}
+.fa-star {
+    margin: 0 1px;
+}
+.athours{
+    display: flex;
+    justify-content: center;
+}
+.popular-authors img {
+    height: 150px;
+    border-radius: 8px;
+}
+.author-info {
+    margin-left: 20px;
+
+
+}
+.author-info h3 {
+    font-size: 25px;
+    font-weight: 700;
+    opacity: 75%;
+    margin-bottom: 15px;
+    
+
+}
+.author-info p {
+    opacity: 40%;
+    font-size: 12px;
+    line-height: 1.3;
+
+
+}
+
+.fa-star {
+    color: rgb(230, 230, 230);
+}
+.good_rivew {
+    color: var(--main-color);
 }
