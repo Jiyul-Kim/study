@@ -1,0 +1,58 @@
+.song-info {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+.song-info img {
+  margin: 40px 0;
+  width: 220px;
+  box-shadow: rgba(121, 117, 117, 0.25) 0px 54px 55px,
+    rgba(121, 117, 117, 0.25) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 10px;
+}
+.song-info__title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+.song-info__sub-title {
+  font-size: 13px;
+  color: var(--gray);
+  margin-bottom: 25px;
+}
+.play-bar__time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  padding: 10px 5px;
+  color: var(--gray);
+}
+.time-line {
+  width: 280px;
+  position: relative;
+}
+.icons {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 15px;
+}
+.pause-circle {
+  background-color: #f81212;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.pause-circle .fa-pause {
+  font-size: 30px;
+}
+.icons > i:first-child,
+.icons > i:last-child {
+  color: rgba(255, 255, 255, 0.5);
+}
