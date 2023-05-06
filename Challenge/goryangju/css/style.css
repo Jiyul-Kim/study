@@ -1,0 +1,101 @@
+@import url("reset.css");
+@import url("var.css");
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  /* padding: 20px; */
+
+}
+header {
+    grid-area: header;
+  border: var(--border-color);
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container{
+    padding-top: 200px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-areas: 
+        "sidebar main"
+        "sidebar footer";
+  grid-gap: 1rem;
+}
+
+
+
+nav {
+    margin-left: 20px;
+    grid-row: sidebar;
+    border: var(--border-color);
+}
+main {
+    margin-right: 20px;
+    grid-column: main;
+  border: var(--border-color);
+}
+
+header h1 {
+
+  padding: 20px;
+  font-size: 45px;
+}
+
+nav {
+    
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 18px;
+}
+.menuNav {
+    width: 100%;
+    padding: 0 20px;
+}
+.menu {
+    border-bottom: var(--border-color);
+    text-align: center;
+    padding: 15px;
+}
+.items-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  /* border: 3px solid; */
+  width: 220px;
+  height: 300px;
+  border: var(--border-color);
+  border-radius: 5px;
+  margin: 10px;
+  padding: 20px 5px;
+  background-color: rgb(245, 245, 245);
+}
+.item img {
+  width: 200px;
+  object-fit: cover;
+}
+.item p {
+  font-size: 14px;
+  margin: 0 20px;
+    line-height: 15px;
+    font-weight: 300;
+}
+
+@media (max-width:1000px) {
+    .item {
+        background-color: tomato;
+    }
+}
