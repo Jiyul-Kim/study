@@ -12,6 +12,8 @@ letter-spacing
 
 2. 이미지 위에 플레이 한 거 같이 표현하는거
 
+    ![스크린샷 2023-05-06 131623](https://user-images.githubusercontent.com/130804887/236599505-bb540836-dbae-4a27-bb19-8ec0b4590f4f.png)
+
     2-1. play 라는 div 새로 만들어서, 그걸 포지션 relative로 해준다. 그 다음 그 플레이 아이콘의 포지션을 absolute로 바꿔줘서 해결
 
     2-2. 이미지 어둡게 만들어주기
