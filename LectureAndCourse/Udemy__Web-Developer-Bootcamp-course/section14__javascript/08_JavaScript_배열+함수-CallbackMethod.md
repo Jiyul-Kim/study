@@ -1,11 +1,8 @@
 # 230508 TIL
 
 # Callback Method
-
 ## FOREACH
-
 > 배열에 있는 각각의 아이템이 함수에 전달되는 메소드
-
 - for of 루프가 등장하기 전에는 훨씬 자주 쓰임
 
 ```js
@@ -19,18 +16,57 @@ numbers.forEach(print)
 
 >>>
 1
-2
+2 
 ... 5
+```
+```js
+// 실제로는 이렇게 사용합니다.
+const numbers = [1,2,3,4,5];
+
+numbers.forEach(function (el){
+    console.log(el)
+})
+```
+## MAP
+> 콜백 함수를 수령해서 배열의 요소를 복제한다. <br><br>
+> 그 다음 콜백의 반환 값을 이용해서 새로운 배열로 변한다.
+
+```js
+const texts = ["house", "go", "sleep"];
+const caps = texts.map(function (t) {
+    return t.toUpperCase();
+})
+texts; // ['house', 'go', 'sleep']
+caps; // ['HOUSE', 'GO', 'SLEEP']
 ```
 
 ```js
-// 실제로는 이렇게 사용합니다.
-const numbers = [1, 2, 3, 4, 5];
+const numbers = [1,2,3,4,5];
+const doubles = numbers.map(function (num) {
+    return num * 2
+})
 
-numbers.forEach(function (el) {
-  console.log(el);
-});
+>>> doubles;
+>>> [2, 4, 6, 8, 10]
 ```
+## ARROW Function
+> 함수를 정의하는 최신 구문
+> <br> 기존의 함수 표현식보다 더 간결하다.
+
+```js
+// 기존의 함수 표현식
+const add = function(x, y) {
+    return x + y;
+}
+```
+```js
+// arrow (=>) 사용
+const add = (x, y) => {
+    return x + y;
+}
+```
+만약 인수가 1개면 중괄호 안써도 상관없음. 그렇지만 규칙성을 위해서는 중괄호 넣는 것이 좋을 것 같다!
+
 
 <hr>
 
@@ -189,3 +225,5 @@ evens.reduce((sum, num) => sun + num, 100)
 // reduce(내용, 초기값) => 인수가 두 개임
 >>> 120
 ```
+## arrow + this
+> 일반 함수와 달리 화살표 함수에서 this 키워드는 다르게 동작한다.
