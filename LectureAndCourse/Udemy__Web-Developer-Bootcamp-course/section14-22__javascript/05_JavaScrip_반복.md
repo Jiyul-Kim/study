@@ -1,5 +1,28 @@
 # 230507 TIL
 
+<details>
+<summary>목차</summary>
+
+- [Loop](#loop)
+  * [for Loops](#for-loops)
+  * [infinite Loops](#infinite-loops)
+  * [Looping Over Arrays](#looping-over-arrays)
+  * [중첩 Loop (...😭)](#---loop-----)
+    + [중첩 배열 빼내기](#---------)
+  * [While Loops](#while-loops)
+  * [루프를 멈추고 싶다면? 🌟 Break!](#----------------break-)
+  * [for of <- 배열과 궁합이 좋아요!](#for-of----------------)
+  * [객체 요소 빼오기](#---------)
+    + [for of는 안된다.](#for-of-----)
+    + [for in 을 사용하면?](#for-in--------)
+      - [번외) 만약 value값을 빼오고 싶다면?](#-------value-----------)
+    + [딱히 반복문 안쓰고 key와 value 값 빼낼려면?](#-----------key--value--------)
+      - [Object.keys (method)](#objectkeys--method-)
+      - [Object.values (method)](#objectvalues--method-)
+      - [Object.entries (method)](#objectentries--method-)
+
+</details>
+
 # Loop
 어떤 기능을 반복하는 방법
 

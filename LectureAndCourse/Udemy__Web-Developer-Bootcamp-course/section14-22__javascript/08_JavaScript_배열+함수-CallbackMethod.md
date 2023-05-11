@@ -1,4 +1,26 @@
 # 230508 TIL
+<details>
+<summary>목차</summary>
+
+- [Callback Method](#callback-method)
+  * [FOREACH](#foreach)
+  * [MAP](#map)
+  * [ARROW Function](#arrow-function)
+- [230509 TIL](#230509-til)
+    + [암시적 반환](#------)
+  * [time 관련 콜백](#time------)
+    + [setTimeout (배열과는 상관 X)](#settimeout----------x-)
+    + [setInterval](#setinterval)
+  * [FILTER](#filter)
+  * [EVERY && SOME / 불리언 메서드](#every----some----------)
+    + [EVERY](#every)
+    + [SOME](#some)
+  * [REDUCE](#reduce)
+    + [최댓값 구하기](#-------)
+    + [초기값](#---)
+  * [arrow + this](#arrow---this)
+
+</details>
 
 # Callback Method
 ## FOREACH

@@ -1,4 +1,39 @@
 # 230506 TIL
+<details>
+<summary>목차</summary>
+
+- [Not A Number (NAN)](#not-a-number--nan-)
+- [Varialbles](#varialbles)
+  * [let](#let)
+  * [const (상수)](#const-----)
+    + [그래서 왜 쓰는건데?](#-----------)
+    + [변수 이름에 대한 규칙](#------------)
+- [Primitivce Types](#primitivce-types)
+  * [Booleans](#booleans)
+  * [Strings (문자열)](#strings------)
+    + [문자열은 인덱스 되어 있다.](#--------------)
+    + [문자열은 서로 합칠 수 있다.](#---------------)
+    + [문자열과 숫자를 더하면 어떻게 될까?](#--------------------)
+    + [METHOD](#method)
+      - [toUpperCase / toLowerCase](#touppercase---tolowercase)
+      - [Trim](#trim)
+      - [indexOf](#indexof)
+      - [Slice (파이썬의 string[fist:end]와 같음)](#slice-------string-fist-end------)
+      - [replace](#replace)
+      - [repeat](#repeat)
+    + [Template Literals (파이썬의 formating과 비슷한듯!)](#template-literals-------formating--------)
+  * [Null & Undefined](#null---undefined)
+    + [undefined](#undefined)
+    + [null](#null)
+    + [막간 팁. 문자열을 int로 바꿔주고 싶다면?](#----------int-----------)
+- [Math Object](#math-object)
+  * [method](#method)
+    + [floor : 소수점 삭제](#floor---------)
+    + [random : 0과 1 사이에 소수점을 랜덤으로 생성](#random---0--1-----------------)
+      - [만약에 1 이상의 랜덤 값을 얻고 싶을 땐..?](#----1-------------------)
+    + [pow : 제곱](#pow-----)
+</details>
+
 # Not A Number (NAN)
 > 0 / 0 <br> 1 + NaN
 
