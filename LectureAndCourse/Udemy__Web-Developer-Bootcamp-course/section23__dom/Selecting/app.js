@@ -14,3 +14,10 @@
 // const doneTodos = document.querySelectorAll(".done");
 // const checkbox = document.querySelector("input:nth-of-type(2)")
 
+// 코딩 연습 58
+const div = document.querySelector("#container")
+for (let i=0; i < 100; i++){
+    const newButton = document.createElement('button');
+    newButton.innerText = "text";
+    div.appendChild(newButton)
+}
