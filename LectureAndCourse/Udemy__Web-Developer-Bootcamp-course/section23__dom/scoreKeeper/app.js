@@ -8,14 +8,17 @@ const p2 = {
     button : document.querySelector('#p2button') ,
     display : document.querySelector("#p2Display")
 }
-
+const table = document.querySelector('#list')
 const resetBtn = document.querySelector('#reset')
 const winningScoreSelect = document.querySelector('#playto');
 
 let winningScore = 3;
 let isGameOver = false;
+let total = 0;
 
 function updateScores (player, opponent) {
+
+
     if (!isGameOver){
         player.score += 1;
         if (player.score === winningScore && player.score >= opponent.score +2){
@@ -24,6 +27,14 @@ function updateScores (player, opponent) {
             opponent.display.classList.add('has-text-danger')
             player.button.disabled = true;
             opponent.button.disabled = true;
+            const newRow = table.insertRow();
+            const newcell1 = newRow.insertCell(0);
+            const newcell2 = newRow.insertCell(1);
+            const newcell3 = newRow.insertCell(2);
+            newcell1.innerText = total += 1
+            newcell2.innerText = p1.score
+            newcell3.innerText = p2.score
+
         } else {
             isGameOver = false;
             if (player.score === winningScore + 1){
@@ -32,6 +43,13 @@ function updateScores (player, opponent) {
                 opponent.display.classList.add('has-text-danger')
                 player.button.disabled = true;
                 opponent.button.disabled = true;
+                const newRow = table.insertRow();
+                const newcell1 = newRow.insertCell(0);
+                const newcell2 = newRow.insertCell(1);
+                const newcell3 = newRow.insertCell(2);
+                newcell1.innerText = total += 1
+                newcell2.innerText = p1.score
+                newcell3.innerText = p2.score
             }
         }
         player.display.textContent = player.score;
@@ -63,3 +81,4 @@ function reset(){
         p.button.disabled = false;
     }
 }
+
