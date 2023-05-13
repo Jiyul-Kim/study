@@ -24,6 +24,15 @@ function updateScores (player, opponent) {
             opponent.display.classList.add('has-text-danger')
             player.button.disabled = true;
             opponent.button.disabled = true;
+        } else {
+            isGameOver = false;
+            if (player.score === winningScore + 1){
+                isGameOver = true;
+                player.display.classList.add('has-text-success')
+                opponent.display.classList.add('has-text-danger')
+                player.button.disabled = true;
+                opponent.button.disabled = true;
+            }
         }
         player.display.textContent = player.score;
         
