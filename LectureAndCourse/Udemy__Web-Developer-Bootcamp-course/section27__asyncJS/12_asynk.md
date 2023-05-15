@@ -60,15 +60,15 @@ isRightTraiangle(3, 4, 5);
 이런 코드를 예시로 생각해보자.
 
 1. `isRightTraiangle(3, 4, 5)` 값을 받아 `isRightTraiangle` 함수는 `3+square(4) === square(5)`의 과정을 가진다.
-   ![](2023-05-14-17-41-03.png)
+   ![](images/2023-05-14-17-41-03.png)
 2. 그 다음, square 함수를 호출 및 **스택을 쌓고**, multiply에게 `3` 의 값을 전달해준다.
-   ![](2023-05-14-17-42-19.png)
+   ![](images/2023-05-14-17-42-19.png)
 3. `multiply`가 `multiply(3, 3)` 값을 전달 및 **스택을 쌓고** `9` 라는 값을 도출한다.
-   ![](2023-05-14-17-43-32.png)
+   ![](images/2023-05-14-17-43-32.png)
 4. `multiply`에서 나온 `9`라는 값으로 `multiply`의 스택은 **제거**되고 `square`에게 9의 값을 전달해준다.
-   ![](2023-05-14-17-44-31.png)
+   ![](images/2023-05-14-17-44-31.png)
 5. `square`는 값을 전달해준 뒤 **제거**되고 `isRightTraiangle`은 `9+square(4) === square(5)`라는 `square(a)` 결과를 내준다.
-   ![](2023-05-14-17-45-50.png)
+   ![](images/2023-05-14-17-45-50.png)
 6. 이 과정을 계속 진행하다보면 결국 JS는 최종 결과인 **true**를 내준다.
 
 ---
@@ -107,17 +107,17 @@ console.log("I AM AT THE END OF THE FILE!")
 ```
 
 1. JS는 `"Sending request to server!"` 콘솔 로그를 인식하고 출력해준다.<br>
-![](2023-05-14-18-23-06.png) 
+![](images/2023-05-14-18-23-06.png) 
 
 2. JS의 콜 스택이 WEb API를 인식한다. 
-![](2023-05-14-18-32-41.png)
-![](2023-05-14-18-33-00.png)
+![](images/2023-05-14-18-32-41.png)
+![](images/2023-05-14-18-33-00.png)
 3. JS: 브라우저야.. 나 `setTimeout`이 뭔지 모르겠성 ㅎ 타이머로 3초로 설정해주라 ㅋ 
 
 4. 브라우저: ㅇㅋ 3초 뒤에 실행함. 
 
 5. JS는 그 다음일을 한다. `"I AM AT THE END OF THE FILE!"`을 출력한다.
-![](2023-05-14-18-33-34.png)
+![](images/2023-05-14-18-33-34.png)
 
 6. 브라우저는 시간을 체크하고 있고, 시간이 지나면 `"Here is your data from the server..."`를 출력해준다.
 
@@ -126,35 +126,44 @@ console.log("I AM AT THE END OF THE FILE!")
 > <br> 최종 값이나 작동 여부에 대한 약속이다.
 
 ### 상태
-1. pending
-무언가를 기다리는 상태
-2. resolved
-성공
+> pending (기다리는 상태) -> fulfilled or rejected
 
-3. rejected
-실패
-4. 요청 상태에 따른 콜백 함수 넣어주기
-   ```js
-   promisesFunction('url')
-      .then(() => { // resolved
-
-      })
-      .catch(() => { // re
-
-      })
-   ```
+### 1. Pruducer
+> 정보를 제공해주는 자
 
 ```js
-
+const promise = new Promise((resolve, reject) => {
+   // 네트워크 통신 및 파일을 읽는 등의 무거운 일 처리
+})
 ```
+사용자가 무언가를 눌렀을 때 네트워크 요청을 해야하는 경우라면, 사용자가 요구하지도 않았는데 **불필요한** 네트워크 통신이 있을 수 있다.
 
+> ⚠️ promise를 만드는 순간, 안에 전달한 executor라는 콜백이 **바로 실행**이 되기 때문에 유의해야한다.
+### 2. Consumers
+> then, catch, finally를 이용해서 값을 받아올 수 있다.
 ```js
-
+const promise = new Promise((resolve, reject) => {
+    console.log("doing something.. .");
+    setTimeout(() => {
+        resolve('jiyul');
+        reject(new Error('네트워크가 연결되지 않았습니다.'))
+    }, 2000);
+});
 ```
-
 ```js
-
+promise
+    .then((value) => {
+    console.log((value));
+    }) // 값이 제대로 전달이 되면 출력이 됨!
+    .catch(error => {
+        console.log(error);
+    }) // reject의 경우에 에러 처리를 하게 해줌!
+    .finally(() => {
+        console.log('finally')
+    }) // resolve, reject에 무관하게 무조건 마지막에 실행이 된다.
 ```
+
+
 
 ```js
 
