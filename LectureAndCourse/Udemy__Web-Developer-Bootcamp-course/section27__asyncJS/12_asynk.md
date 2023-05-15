@@ -1,12 +1,31 @@
 # 230514
 
 # 비동기식 JS
+## 자바는 동기적이다.
+hoisting이 된 이후 부터 코드가 작성한 순서에 맞춰 하나 하나씩 동기적으로 실행된다.
+### hoisting 이란?
+var변수, 함수 선언 들이 자동적으로 제일 위로 올라가는 것
+## 비동기란?
+코드가 언제 실행될지 예측할 수 없는 것이다.
+
+## 들어가기 앞서 CallBack 이란?
+> "우리가 전달해준 함수를 나중에 네가 불러줘." call 다음 back 해주니까 callback임!!
+
+### callback은 동기적/비동기적 처리가 가능하다.
+```js
+// 동기적 처리
+function printImmediately(print){
+   print()
+} 
+// 브라우저에게 API를 요청하는 비동기적 처리
+function printWithDelay(print, timeiut){
+   setTimeout(print,timeout);
+}
+```
+<hr>
 
 ## CallStack
-
-### 들어가기 앞서 CallBack 이란?
-
-> JS가 뒤에서 사용하는 매커니즘 혹은 기능
+ 
 
 ---
 
@@ -102,9 +121,28 @@ console.log("I AM AT THE END OF THE FILE!")
 
 6. 브라우저는 시간을 체크하고 있고, 시간이 지나면 `"Here is your data from the server..."`를 출력해준다.
 
-```js
+## Promises
+> 콜백 지옥 (연속되는 실패/성공 branch가 계속 중첩되는 현상) 에서 벗어나게 해주는 하나의 객체이다.
+> <br> 최종 값이나 작동 여부에 대한 약속이다.
 
-```
+### 상태
+1. pending
+무언가를 기다리는 상태
+2. resolved
+성공
+
+3. rejected
+실패
+4. 요청 상태에 따른 콜백 함수 넣어주기
+   ```js
+   promisesFunction('url')
+      .then(() => { // resolved
+
+      })
+      .catch(() => { // re
+
+      })
+   ```
 
 ```js
 
