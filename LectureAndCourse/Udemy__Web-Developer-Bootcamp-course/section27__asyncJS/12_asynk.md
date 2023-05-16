@@ -1,5 +1,30 @@
 # 230514
+<details>
+<summary>목차</summary>
 
+- [비동기식 JS](#-----js)
+  * [자바는 동기적이다.](#---------)
+    + [hoisting 이란?](#hoisting----)
+  * [비동기란?](#-----)
+  * [들어가기 앞서 CallBack 이란?](#--------callback----)
+    + [callback은 동기적/비동기적 처리가 가능하다.](#callback-------------------)
+  * [CallStack](#callstack)
+    + [Stack](#stack)
+    + [예시](#--)
+  * [JS가 아닌 브라우저가 실제로 작업하고 있는 것이다.](#js--------------------------)
+  * [WebAPI](#webapi)
+    + [작동 방식](#-----)
+  * [Promises](#promises)
+    + [상태](#--)
+    + [1. Pruducer](#1-pruducer)
+    + [2. Consumers](#2-consumers)
+  * [ASYNC 함수](#async---)
+    + [ASYNC](#async)
+    + [AWAIT](#await)
+      - [callback 지옥에서 promise, async 함수까지의 여정 . .](#callback------promise--async-----------)
+</details>
+<hr>
+<br><br>
 # 비동기식 JS
 ## 자바는 동기적이다.
 hoisting이 된 이후 부터 코드가 작성한 순서에 맞춰 하나 하나씩 동기적으로 실행된다.
@@ -163,12 +188,86 @@ promise
     }) // resolve, reject에 무관하게 무조건 마지막에 실행이 된다.
 ```
 
-
+## ASYNC 함수
+> 깔끔한 코드 작성을 도와준다.
+### ASYNC
+> 함수를 비동기 함수로 선언하는 키워드다.
+> <br> 자동으로 promises를 반환한다.
 
 ```js
-
+async function hello () {
+   throw // 오류 반환하게 하는 것
+   return 
+}
 ```
 
-```js
+< 성공 > 값이 있다면 **promise의 resolved** 상태가 뜬다.
 
+![](images/2023-05-16-13-23-10.png)
+
+< 실패 > 비동기 함수에 오류가 있다면 **promise의 rejected** 상태가 뜬다.
+
+![](images/2023-05-16-13-21-59.png)
+
+### AWAIT
+> 비동기 코드를 쓰면서 동기적으로 보이게 해준다.
+> <br> promise가 값을 반환할 때까지 기다리기 위해 비동기 함수의 실행을 일시 정지 시킨다.
+
+#### callback 지옥에서 promise, async 함수까지의 여정 . . 
+
+```js
+// callbakc 지옥
+const delayedColorChange = (newColor, delay, doNext) => {
+    setTimeout(() => {
+        document.body.style.backgroundColor = newColor;
+        doNext && doNext();
+    }, delay)
+}
+delayedColorChange('red', 1000, () => {
+    delayedColorChange('orange', 1000, () => {
+        delayedColorChange('yellow', 1000, () => {
+            delayedColorChange('green', 1000, () => {
+            })
+        })
+    })
+})
+```
+```js
+// promise
+const delayedColorChange = (color, delay) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            document.body.style.backgroundColor = color;
+            resolve();
+        }, delay);
+    })
+}
+
+delayedColorChange('red', 1000)
+    .then (() => delayedColorChange("orange", 1000))
+    .then (() => delayedColorChange("yellow", 1000))
+    .then (() => delayedColorChange("green", 1000))
+    .then (() => delayedColorChange("blue", 1000))
+    .then (() => delayedColorChange("indigo", 1000))
+    .then (() => delayedColorChange("pupple", 1000))
+
+///////////////////////////////////////////////////////
+// asynk function, await
+async function rainbow () {
+    await delayedColorChange('red', 1000)
+    await delayedColorChange('orange', 1000)
+    await delayedColorChange('yellow', 1000)
+    await delayedColorChange('green', 1000)
+    await delayedColorChange('blue', 1000)
+    await delayedColorChange('indigo', 1000)
+    await delayedColorChange('pupple', 1000)
+}
+
+rainbow().then(() => "레인보우는 끝났어!") // 출력 옵션 1
+
+async function printRainbow(){ // 출력 옵션 2
+   await rainbow();
+   console.log("레인보우는 끝났어!");
+}
+printRainbow();
 ```
