@@ -1,0 +1,1 @@
+const data = {"opening_price":"36413000","closing_price":"35994000","min_price":"35920000","max_price":"36656000","units_traded":"1007.19832834","acc_trade_value":"36588125840.7404","prev_closing_price":"36413000","units_traded_24H":"1066.50467995","acc_trade_value_24H":"38747184765.1859","fluctate_24H":"-442000","fluctate_rate_24H":"-1.21"};
