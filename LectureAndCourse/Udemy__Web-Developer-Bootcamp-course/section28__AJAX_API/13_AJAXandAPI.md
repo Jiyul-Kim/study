@@ -69,15 +69,136 @@ JS와 관련있을 듯 하지만 관련은 없다함 ㅋㅋ 단지 포맷임. JS
 
 - 단, undifined는 지원하지 않음으로 null로 표기가 바뀐다.
 
+## HTTP 요청
 ### HTTP Verbs(동사)
 
 > 우리가 보낼 수 있는 갖가지 요청이다. <br>
 > 각 API마다 사용할 수 있는 verbs가 다르니 주의할 것.
 
-#### 1. GET
+##### 1. GET
 
 정보를 가져올 때 사용한다.
 
-#### 2. POST
+##### 2. POST
 
 데이터를 어딘가로 보낼 때 사용한다. (DB 혹은 특정 공간에 저장하도록 한다.)
+
+### HTTP Status Code
+#### 문제 없음! : 2로 시작하는 상태 코드
+200이 가장 흔한 코드다.
+
+#### 문제있음! : 4로 시작하는 코드
+##### 404
+1. 사용자나 클라이언트 측에서 잘못되었을 때 뜨는 코드
+2. 존재하지 않은 엔드포인트를 입력할 때도 뜬다.
+##### 405 
+엔드 포인트는 있으나 가령 Get이 아닌 Post 요청은 지원하지 않을 때 뜨는 코드
+
+#### 서버 사이드 에러 : 5로 시작
+클라이언트보다 서버 사이드에 문제가 생긴 것
+
+#### 리디렉션과 관계있는 : 3으로 시작
+
+### Query Strings (쿼리 문자열)
+> `?sort=desc&color=blue`
+><br> `?` 뒤에 `키=값`이 쌍으로 들어가 있는 모습
+
+### HTTP headers
+> 요청과 함께 정보를 전달하는 부수적인 방식으로서 응답에 해당된다.
+><br> 요청과 함께 보내는 쌍으로 이루어진 정보이다.
+![](images/2023-05-19-13-10-25.png)
+
+## JS로 요청 처리
+### XMLHttpRequset (Old)
+promise를 지원하기 전이여서 콜백 지옥이 펼쳐질 때.
+```js
+const req = new XMLHttpRequest;
+
+req.onload = function () {
+    console.log("it loaded!")
+    const data = JSON.parse(this.responseText)
+    console.log(data.name, data.hair_color)
+}
+
+req.onerror = function() {
+    console.log("ERROR!")
+    console.log(this)
+}
+
+req.open("GET", "https://swapi.dev/api/people/1")
+req.send();
+```
+req에 중첩되는 콜백들도 많아짐. 구문도 김!!
+
+### FETCH (New!!)
+- Fetch 함수로 요청 만들 수 있다.
+- promises를 지원한다.
+- **단,** JSON을 따로 구문 분석해야 한다.
+```js
+fetch("https://swapi.dev/api/people/1")
+.then (res => {
+    console.log("resolved!", res);
+    return res.json()
+})
+.then(data => console.log("JSON Done", data))
+.catch (e => {
+    console.log("ERROR!", e)
+})
+```
+#### 두 번째 요청
+```js
+fetch("https://swapi.dev/api/people/1")
+.then (res => {
+    console.log("resolved!", res);
+    return res.json()
+})
+.then((data) => {
+    console.log(data)
+    return "https://swapi.dev/api/people/2"
+})
+.then ((res) => {
+    console.log("second resolved!");
+    return res.json();
+})
+.then((data) => {
+    console.log(data)
+})
+.catch (e => {
+    console.log("ERROR!", e)
+})
+```
+이런식으로 선형적인 처리가 가능하다.
+
+##### 비동기 함수를 이용한 리팩토링
+```js
+const loadStarWarsPeople = async () => {
+    try {
+        const res = await fetch("https://swapi.dev/api/people/1")
+        const data = await res.json()
+        console.log(data)
+        const res2 = await fetch("https://swapi.dev/api/people/2")
+        const data2 = await res2.json()
+        console.log(data2)
+    } catch (e) {
+        console.log("ERROR!", e)
+    }
+};
+
+loadStarWarsPeople();
+```
+
+### AXIOS (타사 라이브러리, 네이티브 함수 X)
+HTTP 요청의 생성과 처리를 최대한 간소화할 목적으로 만들어 졌다.
+- 백그라운드에서는 동일하게 브라우저에 fetch 함수를 사용하지만 JS가 기본 제공하는 함수가 아니므로 추가로 빌드해야 한다.
+
+```js
+const getStarWarsPerson = async (id) => {
+    try {
+        const res = await axios.get(`https://swapi.dev/api/people/${id}`);
+        console.log("response", res)
+    } catch(e){
+        console.log("ERROR", e)
+    }
+}
+getStarWarsPerson(5);
+```
