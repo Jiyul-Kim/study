@@ -1,4 +1,36 @@
-# 230516 TIL
+<details>
+<summary>목차</summary>
+
+- [AJAX (Asynchronous Javascript And XML)](#ajax--asynchronous-javascript-and-xml-)
+- [API (Apllication Programing Interface)](#api--apllication-programing-interface-)
+  * [WebAPI](#webapi)
+  * [JSON](#json)
+      - [XML](#xml)
+    + [JS와의 차이점](#js------)
+    + [JS에서 JSON 파싱하기](#js---json-----)
+    + [JS를 JSON으로 변경하기](#js--json-------)
+  * [HTTP 요청](#http---)
+    + [HTTP Verbs(동사)](#http-verbs----)
+        * [1. GET](#1-get)
+        * [2. POST](#2-post)
+    + [HTTP Status Code](#http-status-code)
+      - [문제 없음! : 2로 시작하는 상태 코드](#---------2------------)
+      - [문제있음! : 4로 시작하는 코드](#--------4---------)
+        * [404](#404)
+        * [405](#405)
+      - [서버 사이드 에러 : 5로 시작](#------------5----)
+      - [리디렉션과 관계있는 : 3으로 시작](#-------------3-----)
+    + [Query Strings (쿼리 문자열)](#query-strings---------)
+    + [HTTP headers](#http-headers)
+  * [JS로 요청 처리](#js-------)
+    + [XMLHttpRequset (Old)](#xmlhttprequset--old-)
+    + [FETCH (New!!)](#fetch--new---)
+      - [두 번째 요청](#-------)
+        * [비동기 함수를 이용한 리팩토링](#----------------)
+    + [AXIOS (타사 라이브러리, 네이티브 함수 X)](#axios--------------------x-)
+
+</details>
+<br>
 
 # AJAX (Asynchronous Javascript And XML)
 
@@ -38,7 +70,7 @@ API 주소를 가져와보면 이런 데이터가 있다.
 
 > JSON 이전에 쓰이던 포맷이다. `<태그>내용</태그>` 형식이며, 태그는 개발자가 마음대로 지을 수 있다.
 
-## ![](images/2023-05-17-22-42-31.png)
+![](images/2023-05-17-22-42-31.png)
 
 > **J**ava <br> > **S**cript <br> > **O**bject <br> > **N**otation
 
