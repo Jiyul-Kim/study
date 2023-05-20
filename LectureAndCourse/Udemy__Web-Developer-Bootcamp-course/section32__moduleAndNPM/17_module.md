@@ -1,3 +1,6 @@
+
+# module
+
 ## module.export
 두 개의 js 파일을 이어주고, 출력하게 도와준다.
 
@@ -70,4 +73,69 @@ module.exports = math;
 ```js
 exports.square = square;
 exports.PI = PI;
+```
+
+## 패키지
+여러 개의 js파일을 하나의 js에 불러오면서, 해당 파일을 다른 디렉토리에서 호출해줄 수 있다.
+
+해당 js들은 `shelter`라는 폴더에 저장되어 있다.
+```js
+// blue.js
+module.exports = {
+    name: 'blue',
+    color: 'grey'
+}
+```
+```js
+// numnum.js
+module.exports = {
+    name: 'numnum',
+    color: 'black'
+}
+```
+```js
+// rare.js
+module.exports = {
+    name: 'rare',
+    color: 'tuxedo'
+}
+```
+```js
+// index.js (node.js 에서 특수한 파일인데, 집합점을 만들어주는 파일이다.)
+const blue = require('./blue')
+const numnum = require('./numnum')
+const rare = require('./rare')
+
+const allCats = [blue, numnum, rare];
+console.log(allCats); 
+```
+```js
+// terminal
+$ node index.js
+[
+  { name: 'blue', color: 'grey' },
+  { name: 'numnum', color: 'black' },
+  { name: 'rare', color: 'tuxedo' }
+]
+```
+해당 index.js 파일을 완전 다른 디렉토리에서 열어볼 수 있을까?
+
+답은 쌉가능! 이다.
+```js
+// index.js
+module.exports = allCats;
+```
+```js
+// 상위 폴더 - app2.js
+const cats = require('./shelter');
+
+console.log("required an entire directory", cats)
+```
+```js
+$ node app2.js
+required an entire directory [
+  { name: 'blue', color: 'grey' },
+  { name: 'numnum', color: 'black' },
+  { name: 'rare', color: 'tuxedo' }
+]
 ```
