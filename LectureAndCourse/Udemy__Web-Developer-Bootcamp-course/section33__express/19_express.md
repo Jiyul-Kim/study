@@ -1,3 +1,26 @@
+<details>
+<summary>목차</summary>
+
+- [들어가기 앞서 . . Framework VS Library](#----------framework-vs-library)
+- [Express](#express)
+  * [1. 설치 및 서버 실행, 요청 확인](#1------------------)
+  * [요청 및 응답 객체](#----------)
+    + [1. 들어오는 요청을 의미하는 객체 `req` (requst)](#1-------------------req---requst-)
+    + [2. 응답을 의미하는 객체 `res` (response)](#2--------------res---response-)
+    + [예시](#--)
+  * [라우팅](#---)
+    + [라우팅이란?](#------)
+    + [하나 이상의 응답 얻기](#------------)
+      - [app.get](#appget)
+        * [제네릭 get](#----get)
+      - [app.post](#apppost)
+  * [경로 매개 변수](#--------)
+    + [구현하기](#----)
+  * [쿼리 문자열](#------)
+  * [슬기로운 변경 사항: Nodemon](#------------nodemon)
+</details>
+<hr>
+
 # 들어가기 앞서 . . Framework VS Library
 둘 다 다른 사람이 작성한 코드를 npm에서 다운받아서 쓰는 것으로 공통점이 있지만, `framework`에는 `제어와 제어의 역전` 이라는 목적과 목표가 있다.
 
@@ -145,21 +168,68 @@ app.post('/cats', (req, res) => {
 
 **Get**으로 요청을 보냈다면 'meow'로 응답을 준다.
 
-### 제네릭 패턴
+## 경로 매개 변수
 레딧을 예시로 들자면 `https://www.reddit.com/r/anime/` 와 같은 subreddit 있다면 `r/subreddit` 와 같은 패턴을 하고 있는 것을 볼 수 있다.
 
 이처럼 라우팅은 대게 제네릭 패턴을 가지고 있다. 
 
-#### 구현하기
+### 구현하기
 ```js
-app.get('/r/:subreddit', (req, res) => {
-    console.log('this is subreddit!')
+app.get('/r/:subreddit/:postID', (req, res) => {
+    const {subreddit, postID} = req.params;
+    res.send(`<h1>Viewing post ID: ${postID}on the ${subreddit} subreddit</h1>`)
 })
 ```
-이렇게 해두면 `/r/something`을 해도 'this is subreddit!'이 뜬다.
-```js
+![](images/2023-05-21-21-50-45.png)
 
-```
-```js
+`라우트/:매개변수`로 구현이 가능하다!
 
+## 쿼리 문자열
+> **쿼리란?**
+> <br> URL의 일부로 물음표 뒤에 위치하며 쿼리 문자열의 한 부분으로써 키-값 쌍으로도 정보를 담는다.
+```js
+app.get('/search', (req, res) => {
+    const {q} = req.query;
+    if (!q){
+        res.send('NOTHING FOUND!')
+    }
+    res.send(`<h1>Search results for: ${q}</h1>`)
+})
 ```
+![](images/2023-05-21-22-24-59.png)
+
+## 슬기로운 변경 사항: Nodemon
+변경 사항을 적용하려면 지금까진 코드의 수정이 있다면 코드 저장 > 서버 재실행 등의 귀찮은 과정을 거쳤었다.
+
+노드몬을 쓰면 브라우져를 새로고침만 하면 된다는 사실!
+
+[![](images/2023-05-21-22-29-02.png)](https://www.npmjs.com/package/nodemon)
+
+1. 설치
+```js
+$ npm install -g nodemon
+```
+
+2. node => nodemon
+```js
+// 기존 terminal
+$ node index.js
+
+// nodemon 사용
+$ nodemon index.js
+```
+![](images/2023-05-21-22-33-22.png)
+여기서 코드를 이렇게 바꿔보자!
+
+3. 새로고침
+```js
+app.get('/', (req, res) => {
+    res.send('Welcome to the home page!')
+})
+```
+이후 페이지를 새로고침 하면!
+![](images/2023-05-21-22-35-22.png) 
+변경되고 있다는 nodemon의 메세지가 뜬 다음, 
+![](images/2023-05-21-22-33-47.png)
+
+Ta-da! 페이지에 쉽게 적용된 모습을 볼 수 있다.
