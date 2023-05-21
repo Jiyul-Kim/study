@@ -1,3 +1,20 @@
+<details>
+<summary>목차</summary>
+
+- [npm (node packge manager) = node 커뮤니티](#npm--node-packge-manager----node-----)
+  * [npm 패키지 설치 및 실행](#npm------------)
+    + [예시. give-me-a-joke 패키지](#---give-me-a-joke----)
+      - [1. npm 설치](#1-npm---)
+  * [패키지 지역 설치 && 전역 설치](#------------------)
+    + [전역 설치 예시. cowsay](#---------cowsay)
+  * [package.json 이란?](#packagejson----)
+    + [터미널에서 쉽게 package.json 파일 만들기](#---------packagejson-------)
+    + [우리가 설치한 npm dependencies는 패키지.json에 추가 된다!](#--------npm-dependencies-----json--------)
+      - [유용한 이유](#------)
+    + [패키지가 포함된 폴더 공유하기](#----------------)
+</details>
+<hr>
+
 # npm (node packge manager) = node 커뮤니티
 
 > npm이란?<br> 
@@ -85,15 +102,12 @@ Ta-da! 이렇게 쉽게 package.json이 생성된다!
 #### 유용한 이유
 1. 착수 중인 작업에 대한 기록을 남길 수 있다.
 2. 다른 사람이나 다른 기기에서 내 자신에게 이 파일을 공유할 때 실제로 이 모든 디펜던시들을 한 번에 바로 다운로드 할 수 있다.
-```js
 
-```
-```js
-
-```
-```js
-
-```
-```js
-
-```
+### 패키지가 포함된 폴더 공유하기
+> 모듈에는 수~많은 폴더와 파일이 있기 때문에 이것을 한 번에 공유하는 것은 비효율적이다.
+>
+> 그래서 package.json에 디펜던시 목록을 토대로 터미널에 `npm i` 혹은 `npm install`을 적어주면 해당 목록의 **패키지 모듈을 한 번에 다운**받을 수 있다!
+>
+> ![](images/2023-05-20-23-18-50.png)
+> ![](images/2023-05-20-23-20-11.png)
+> 이렇게 디펜던시가 포함된 `node_modules` 폴더가 자동으로 생성된다.
