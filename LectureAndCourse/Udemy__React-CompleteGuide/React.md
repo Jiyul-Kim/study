@@ -157,6 +157,74 @@ React는 렌더되는 JS를 저장해주면 자동으로 서버가 변경 사항
 ![](images/2023-05-22-14-17-38.png)
 
 ![](images/2023-05-22-14-17-47.png)
+
+# props
+컴포넌트를 재활용 하려면 어떻게 해야할까?
+
+## 일반적인 자바스크립트 - 함수
+```js
+// 일반 자바스크립트
+function expenseItem(title, amount, date) {
+  console.log(title, amiunt, new Date(date)) // 'Car Insurance', 294.67, '2021, 2, 28'
+}
+
+expenseItem('Car Insurance', 294.67, '2021, 2, 28')
+```
+함수의 매개변수를 통해 값을 받아들이고 이 값을 이용할 수 있다. 리액트도 이처럼 props라는 기능을 이용해 각자의 컴포넌트의 매개변수 역할을 도와준다.
+
+## props 사용법
+```js
+// app.js
+import ExpenseItem from "./components/ExpenseItem";
+
+function App() {
+  const expenses = [
+    {
+      id: "e1",
+      title: "Toilet Paper",
+      amount: 94.12,
+      date: new Date(2020, 7, 14),
+    }
+  ]; // 전달할 내용을 객체로 묶어야 한다!
+  return (
+  <ExpenseItem
+      title={expenses[0].title}
+      amount={expenses[0].amount}
+      date={expenses[0].date}
+    ></ExpenseItem>
+  )
+}
+```
+```js
+// ExpenseItem.js
+
+function ExpenseItem(props) { // props가 매개변수 자리에 온다.
+    return (
+    <div className="expense-item">
+      <div>{props.date.toISOString()}</div>
+      <div className="expense-item__description">
+        <h2>{props.title}</h2>
+        <div className="expense-item__price">${props.amount}</div>
+      </div>
+    </div>
+  );
+}
+
+export default ExpenseItem;
+```
+![](images/2023-05-22-23-16-07.png)
+
+코드블럭에는 안써있지만, 이렇게 여러 개의 컴포넌트가 한 번에 들어오는 것을 볼 수 있다!
+
+## props 장점
+1. 재사용 가능한 컴포넌트를 만들 수 있게 해준다.
+2. 다른 컴포넌트에서 이 컴포넌트로 데이터를 전달해줄 수 있다.
+```js
+
+```
+```js
+
+```
 ```js
 
 ```
