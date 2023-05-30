@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <span>Total Click: 0</span>
+    <button id="btn">Click Me!</button>
+  </body>
+  <script>
+    const span = document.querySelector('span')
+    let counter = 0;
+    const button = document.querySelector('#btn');
+    function hanbleClick() {
+        counter += 1;
+        span.innerText = `Total Click: ${counter}`
+    }
+    button.addEventListener('click', hanbleClick)
+  </script>
+</html>
