@@ -1,0 +1,6 @@
+/* 경로 : src/components/PhoneList/PhoneList.css */
+
+.phone_list {
+	display: flex;
+	flex-direction: column;
+}
